@@ -40,7 +40,10 @@
   -webkit-box-sizing: border-box;
   box-sizing: border-box; }
 
+
+
 html {
+  height:100%;
   font-family: sans-serif;
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
@@ -6437,11 +6440,12 @@ button.bg-dark:focus {
   z-index: 1030; }
 
 .fixed-bottom {
-  position: fixed;
+  position: relative;
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 1030; }
+  z-index: -10;
+}
 
 @supports ((position: -webkit-sticky) or (position: sticky)) {
   .sticky-top {
@@ -8138,7 +8142,9 @@ body {
   line-height: 1.8;
   font-weight: normal;
   background: #fafafa;
-  color: gray; }
+  color: gray; 
+  padding-bottom: 
+}
 
 a {
   -webkit-transition: .3s all ease;
@@ -8212,7 +8218,21 @@ h1, h2, h3, h4, h5,
 .wrapper {
   width: 100%; }
 
+.bg-verydark{
+    background: #1d1919;
+}
+
+.footer
+{
+    position: absolute;
+    bottom: 0;
+    height: 50px;
+    left: 0;
+    right: 0;
+    width: 100%;
+}
 #sidebar {
+  z-index: 5;
   min-width: 300px;
   max-width: 300px;
   background: #1d1919;
