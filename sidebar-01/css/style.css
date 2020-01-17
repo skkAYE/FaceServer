@@ -6883,7 +6883,7 @@ button.bg-dark:focus {
 
 .ml-auto,
 .mx-auto {
-  margin-left: auto !important; }
+  margin-right: auto !important; }
 
 @media (min-width: 576px) {
   .m-sm-0 {
