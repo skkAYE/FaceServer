@@ -1,0 +1,14 @@
+Dans la partie Home, compléter rapidement avec une description du site
+
+Dans la partie Répertoire, il faudra récupérer la bdd pour l'afficher. L'attribut data-name doit etre remplacé par le nom également
+Il faut aussi lier au bouton delete une fonction qui permet d'envoyer une requete SQL de suppression de la donnée en question
+Et au bouton modifier également
+peut etre mettre une alerte success
+
+et faire une fonction qui en fonction du nombre de row dans la bdd créer un tableau de raw
+(voir lien dans le fichier html) en utilisant le template d'un row que j'ai deja fait
+
+dans la partie contact ou about us??? peut etre la supprimer
+
+dans la partie log, peut etre un fichier log par jour et un event listener de la modification du fichier du jour qui permet de mettre à jour les logs
+le format est deja setup avec la balise Hour pour le temps 
