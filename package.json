@@ -19,5 +19,18 @@
     "jquery": "3.5.0",
     "jquery.easing": "^1.4.1",
     "morgan": "~1.9.1"
-  }
+  },
+  "main": "app.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skkAYE/FaceServer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/skkAYE/FaceServer/issues"
+  },
+  "homepage": "https://github.com/skkAYE/FaceServer#readme",
+  "description": ""
 }
