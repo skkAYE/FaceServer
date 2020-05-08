@@ -12,14 +12,27 @@
     "cookie-parser": "~1.4.4",
     "datatables.net-bs4": "1.10.19",
     "debug": "~2.6.9",
-    "ejs": "^3.0.1",
-    "express": "~4.16.1",
+    "ejs": "^3.1.2",
+    "express": "^4.16.4",
     "express-fileupload": "^1.1.7-alpha.3",
     "http-errors": "~1.6.3",
     "jade": "~1.11.0",
-    "jquery": "3.4.1",
+    "jquery": "3.5.0",
     "jquery.easing": "^1.4.1",
     "morgan": "~1.9.1",
     "multer": "^1.4.2"
-  }
+  },
+  "main": "app.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skkAYE/FaceServer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/skkAYE/FaceServer/issues"
+  },
+  "homepage": "https://github.com/skkAYE/FaceServer#readme",
+  "description": ""
 }
