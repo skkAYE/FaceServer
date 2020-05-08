@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Face Server - Repertory</title>
+    <%- include('includes/head'); %>
+</head>
+
+<body>
+
+    <%- include('includes/navbar'); %>
+    <table class="table table-striped table-dark">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Prénom</th>
+                <th scope="col">Photo</th>
+                <th scope="col">Action</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">001</th>
+                <td>Zekri</td>
+                <td>Hedi</td>
+                <td>Hedi</td>
+                <td>
+                    <a href="/add?name=Hedi&surname=Zekri"><button type="button" class="btn btn-success" data-toggle="modal" data-target="#" data-name="Tabbara Arnaud "><i class="fa fa-edit fa-lg"></i></button></a>
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#suppressionModal" data-name="ZE ZE "><i class="fa fa-trash-o fa-lg"></i></button>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">002</th>
+                <td>Xu</td>
+                <td>Lu</td>
+                <td>Lu</td>
+                <td>
+                    <a href="/add?name=Lu&surname=Xu"><button type="button" class="btn btn-success" data-toggle="modal" data-target="#" data-name="Tabbara Arnaud "><i class="fa fa-edit fa-lg"></i></button></a>
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#suppressionModal" data-name="Tabbara Arnaud "><i class="fa fa-trash-o fa-lg"></i></button>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">003</th>
+                <td>Tabbara</td>
+                <td>Arnaud</td>
+                <td>Arnaud</td>
+                <td>
+                    <a href="/add?name=Arnaud&surname=Tabbara"><button type="button" class="btn btn-success" data-toggle="modal" data-target="#" data-name="Tabbara Arnaud "><i class="fa fa-edit fa-lg"></i></button></a>
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#suppressionModal" data-name="Tabbara Arnaud "><i class="fa fa-trash-o fa-lg"></i></button>
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="modal fade" id="suppressionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Suppression d'un utilisateur</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Voulez vous vraiment supprimer <span id="name"></span>de la base de donnée?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                    <button type="button" class="btn btn-primary">Confirmer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	<input type='file' accept="image/*" />
+<br>
+<img id="myImg" src="file:///C:\Users\Skaye\Pictures\lol.jpg" alt="your image" height="200" width="200">
+
+    <!-- Pour remplir le tableau avec les données https://stackoverflow.com/questions/51275730/populate-html-table-with-json-data -->
+
+    <%- include ('includes/footer') %>
+
+    <%- include ('includes/scripts') %>
+
+
+
+</body>
+
+</html>
