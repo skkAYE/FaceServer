@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <title>Face Server - Home</title>
+        <%- include('includes/head'); %>
+    </head>
+
+	<style>
+	input.inputFile
+	{
+		opacity: 0;
+	}
+	#my_img
+	{
+      cursor: pointer;
+    }
+	#my_img.empty:hover {
+      opacity: 30%;
+    }
+	</style>
+
+
+    <body>
+
+        <%- include('includes/navbar'); %>
+
+        <h2 class="mb-4">Bienvenue sur FaceServer !</h2>
+        <p>		Choisissez la personne pour laquelle vous souhaitez ajouter des photos et selectionnez les photos correspondantes : </p>
+
+        <form method="POST" action="/add" enctype="multipart/form-data" style="font-size:15;">
+            <select name="person_name" class="browser-default custom-select" required>
+			<option value="">Choisissez une personne...</option>
+            <option id="Hedi Zekri" value="Hedi Zekri">Hedi Zekri</option>
+            <option id="Lu Xu" value="Lu Xu">Lu Xu</option>
+            <option id="Arnaud Tabbara" value="Arnaud Tabbara">Arnaud Tabbara</option>
+            </select>
+		<br>
+		
+        <input type="file" accept="image/*" name="photo" class="form-col-file inputFile" class="form-control-file" id="exampleFormControlFile1">
+		<br>
+		<label for="exampleFormControlFile1">
+        <img id="my_img" class="empty" src="images/cadre.jpg" alt="your image" height="200" width="200"></label>
+        <br><br>
+        <input type="submit" value="Upload" class="btn btn-success">
+        </form>
+
+    <%- include ('includes/footer') %>
+
+    <%- include ('includes/scripts') %>
+    </body>
+
+	<script>
+	var person = <%- JSON.stringify(query.name) %>+" "+<%- JSON.stringify(query.surname) %>;
+	var elt = document.getElementById(person)
+	elt.setAttribute('selected', true);
+	</script>
+</html>

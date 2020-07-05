@@ -8,6 +8,10 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 
+#npm init and npm install doesnt need package.json
+package-lock.json
+package.json
+
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
@@ -88,3 +92,4 @@ typings/
 
 # DynamoDB Local files
 .dynamodb/
+

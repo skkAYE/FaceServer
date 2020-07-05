@@ -9,28 +9,171 @@
 <body>
 
     <%- include('includes/navbar'); %>
-
-
     <h1> Logs de la journée </h1>
-
-
-
+    
     <br>
-    <pre style="font-size: 1.1rem;">
-<hour>15h06: </hour>Hedi vient de passer dans le champ de la caméra.
-<hour>18h08: </hour>Un inconnu est passé dans le champ.
-<hour>18h12: </hour>Un inconnu est passé dans le champ pour la seconde fois.
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-</pre>
+    
+    <% var today = new Date(); 
+    var today_day_str = ("(" + today.getDate().toString() + "/" + (today.getMonth() + 1).toString() + "/" + today.getFullYear() + ")");
+    var today_month_str = ("(" + (today.getMonth() + 1).toString() + "/" + today.getFullYear() + ")");
+    var today_year_str = ("(" + today.getFullYear() + ")");
+    %>
+    
+    <div class="container">
+      <ul class="nav nav-tabs nav-fill">
+        <li class="nav-item">
+            <a class="nav-link active" data-toggle="pill" href="#jour">Jour</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="pill" href="#mois">Mois</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="pill" href="#annee">Annee</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="pill" href="#global">Global</a>
+        </li>
+      </ul>
 
+      <div class="tab-content">
+        <div id="jour" class="tab-pane fade show active">
+            <pre style="font-size: 1.1rem;"><h3 class="text-center">Jour <%- today_day_str;%></h3><div class = "text-center"><table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                <th class="text-center" scope="col">#</th>
+                <th class="text-center" scope="col">Date</th>
+                <th class="text-center" scope="col">Heure</th>
+                <th class="text-center" scope="col">Nom</th>
+                <th class="text-center" scope="col">Confiance %</th>
+                <th class="text-center" scope="col">Photo</th>
+                </tr>
+            </thead>
+            <tbody>
+            <% for(var i = 0 ; i < json.length ; i++) {
+                var parts = json[i].date.split('/');
+                var row_date = new Date(parts[2], parts[1] - 1, parts[0]);
+                same_day = (row_date.getDate() == today.getDate() && row_date.getMonth() == today.getMonth() && row_date.getFullYear() == today.getFullYear());
+            
+                if (same_day){ 
+            %>
+                
+               <tr>
+                    <td><%= i %></td>
+                    <td class="text-center"><hour><%= json[i].date %></hour></td>
+                    <td class="text-center"><hour><%= json[i].heure %></hour></td>
+                    <td class="text-center"><hour><%= json[i].nom %></hour></td>
+                    <td class="text-center"><%= json[i].confiance_modele %></td>
+                    <td class="text-center"><%= json[i].id_photo %></td>
+               </tr>
+            <% } } %>
+            </tbody>
+            </table>
+            </div>
+            </pre>
+        </div>
+        <div id="mois" class="tab-pane fade">
+          <pre style="font-size: 1.1rem;"><h3 class="text-center">Mois <%- today_month_str;%></h3><div class = "text-center"><table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                <th class="text-center" scope="col">#</th>
+                <th class="text-center" scope="col">Date</th>
+                <th class="text-center" scope="col">Heure</th>
+                <th class="text-center" scope="col">Nom</th>
+                <th class="text-center" scope="col">Confiance %</th>
+                <th class="text-center" scope="col">Photo</th>
+                </tr>
+            </thead>
+            <tbody>
+            <% for(var i = 0 ; i < json.length ; i++) {
+                var parts = json[i].date.split('/');
+                var row_date = new Date(parts[2], parts[1] - 1, parts[0]);
+                var today = new Date();
+                same_month = (row_date.getMonth() == today.getMonth() && row_date.getFullYear() == today.getFullYear());
+            
+                if (same_month){ 
+            %>
+                
+               <tr>
+                    <td><%= i %></td>
+                    <td class="text-center"><hour><%= json[i].date %></hour></td>
+                    <td class="text-center"><hour><%= json[i].heure %></hour></td>
+                    <td class="text-center"><hour><%= json[i].nom %></hour></td>
+                    <td class="text-center"><%= json[i].confiance_modele %></td>
+                    <td class="text-center"><%= json[i].id_photo %></td>
+               </tr>
+            <% } } %>
+            </tbody>
+            </table>
+            </div>
+            </pre>
+        </div>
+        <div id="annee" class="tab-pane fade">
+            <pre style="font-size: 1.1rem;"><h3 class="text-center">Annee <%- today_year_str;%></h3><div class = "text-center"><table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                <th class="text-center" scope="col">#</th>
+                <th class="text-center" scope="col">Date</th>
+                <th class="text-center" scope="col">Heure</th>
+                <th class="text-center" scope="col">Nom</th>
+                <th class="text-center" scope="col">Confiance %</th>
+                <th class="text-center" scope="col">Photo</th>
+                </tr>
+            </thead>
+            <tbody>
+            <% for(var i = 0 ; i < json.length ; i++) {
+                var parts = json[i].date.split('/');
+                var row_date = new Date(parts[2], parts[1] - 1, parts[0]);
+                var today = new Date();
+                same_year = (row_date.getFullYear() == today.getFullYear());
+            
+                if (same_year){ 
+            %>
+               <tr>
+                    <td><%= i %></td>
+                    <td class="text-center"><hour><%= json[i].date %></hour></td>
+                    <td class="text-center"><hour><%= json[i].heure %></hour></td>
+                    <td class="text-center"><hour><%= json[i].nom %></hour></td>
+                    <td class="text-center"><%= json[i].confiance_modele %></td>
+                    <td class="text-center"><%= json[i].id_photo %></td>
+               </tr>
+            <% } } %>
+            </tbody>
+            </table>
+            </div>
+            </pre>
+        </div>
+        <div id="global" class="tab-pane fade">
+          <pre style="font-size: 1.1rem;"><h3 class="text-center">Global</h3><div class = "text-center"><table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                <th class="text-center" scope="col">#</th>
+                <th class="text-center" scope="col">Date</th>
+                <th class="text-center" scope="col">Heure</th>
+                <th class="text-center" scope="col">Nom</th>
+                <th class="text-center" scope="col">Confiance %</th>
+                <th class="text-center" scope="col">Photo</th>
+                </tr>
+            </thead>
+            <tbody>
+            <% for(var i = 0 ; i < json.length ; i++) { %>
+               <tr>
+                    <td><%= i %></td>
+                    <td class="text-center"><hour><%= json[i].date %></hour></td>
+                    <td class="text-center"><hour><%= json[i].heure %></hour></td>
+                    <td class="text-center"><hour><%= json[i].nom %></hour></td>
+                    <td class="text-center"><%= json[i].confiance_modele %></td>
+                    <td class="text-center"><%= json[i].id_photo %></td>
+               </tr>
+            <% } %>
+            </tbody>
+            </table>
+            </div>
+        </pre>
+        </div>
+      </div>
+    </div>
+	
+	
 
     <%- include ('includes/footer') %>
 

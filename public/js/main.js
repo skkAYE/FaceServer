@@ -1,3 +1,4 @@
+
 (function ($) {
 
     "use strict";
@@ -43,3 +44,23 @@ $(document).on('show.bs.modal', '#suppressionModal', function (event) {
     var modal = $(this)
     modal.find('.modal-body #name').text(recipient)
 });
+
+
+window.addEventListener('load', function() {
+  document.querySelector('input[type="file"]').addEventListener('change', function() {
+      if (this.files && this.files[0]) {
+          var img = document.querySelector('img');  // $('img')[0]
+          img.src = URL.createObjectURL(this.files[0]); // set src to blob url
+		  img.classList.remove("empty")
+          img.onload = imageIsLoaded;
+      }
+  });
+});
+
+
+function imageIsLoaded() { 
+  
+}
+
+
+

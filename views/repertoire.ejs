@@ -9,54 +9,25 @@
 <body>
 
     <%- include('includes/navbar'); %>
-    <table class="table table-striped table-dark">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Nom</th>
-                <th scope="col">Prénom</th>
-                <th scope="col">Photo</th>
-                <th scope="col">Action</th>
+	
+	
+	<p id="success" class="alert alert-success" role="alert" hidden> L'image a bien été uploadée sur le serveur. </p>	
+	<p id="success2" class="alert alert-success" role="alert" hidden> La personne a bien été ajoutée à la liste. </p>	
 
-
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th scope="row">001</th>
-                <td>Zekri</td>
-                <td>Hedi</td>
-                <td>Hedi</td>
-                <td>
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#suppressionModal" data-name="Tabbara Arnaud "><i class="fa fa-edit fa-lg"></i></button>
-                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#suppressionModal" data-name="ZE ZE "><i class="fa fa-trash-o fa-lg"></i></button>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">002</th>
-                <td>Xu</td>
-                <td>Lu</td>
-                <td>Lu</td>
-                <td>
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#suppressionModal" data-name="Tabbara Arnaud "><i class="fa fa-edit fa-lg"></i></button>
-                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#suppressionModal" data-name="Tabbara Arnaud "><i class="fa fa-trash-o fa-lg"></i></button>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">003</th>
-                <td>Tabbara</td>
-                <td>Arnaud</td>
-                <td>Arnaud</td>
-                <td>
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#suppressionModal" data-name="Tabbara Arnaud "><i class="fa fa-edit fa-lg"></i></button>
-                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#suppressionModal" data-name="Tabbara Arnaud "><i class="fa fa-trash-o fa-lg"></i></button>
-                </td>
-
-            </tr>
-        </tbody>
-    </table>
-
-    <div class="modal fade" id="suppressionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	<h5>Ajouter une nouvelle personne</h5>
+	
+	<form method="POST" action="/repertoire">
+	<div class="form-row">
+    <div class="col">
+    <input type="text" class="form-control" name="person_surname" placeholder="Nom de la personne" required> 
+	</div>
+	<div class="col">
+    <input type="text" class="form-control" name="person_name" placeholder="Prénom de la personne" required>
+    </div>
+	</div>
+	<div class="form-group" style="margin-top: 10px;"><button data-toggle="modal" data-target="#addModal" type="button" class="btn btn-success">Ajouter</button></div>
+	
+	    <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -66,15 +37,50 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    Voulez vous vraiment supprimer <span id="name"></span>de la base de donnée?
+                    Voulez vous vraiment ajouter <span id="name"></span>à la base de donnée?
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                    <button type="button" class="btn btn-primary">Confirmer</button>
+                    <button type="submit" class="btn btn-success">Confirmer</button>
                 </div>
             </div>
         </div>
     </div>
+	</form>
+	<br>
+	<h5>Liste des personnes enregistrées</h5>
+    <table class="table table-striped table-dark">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Prénom</th>
+                <th scope="col">Action</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+		
+			<% for(var i = 0 ; i < peopleArr.length ; i++) {
+				if(peopleArr[i] != "Unknown"){
+					var surname = peopleArr[i].split(" ")[0];
+					var name = peopleArr[i].split(" ")[1];
+				%>
+				
+			<tr>
+                <th scope="row"><%= i %></th>
+                <td><%= surname %></td>
+                <td><%= name %></td>
+                <td>
+                    <a href="/add?name=<%= name %>&surname=<%= surname %>"><button type="button" class="btn btn-success" data-toggle="modal" data-target="#" data-name="Tabbara Arnaud "><i class="fa fa-edit fa-lg"></i></button></a> 
+                    <!-- <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#suppressionModal" data-name="ZE ZE "><i class="fa fa-trash-o fa-lg"></i></button>  -->
+                </td>
+            </tr>		
+			<% }} %>
+        </tbody>
+    </table>
+
 
 
     <!-- Pour remplir le tableau avec les données https://stackoverflow.com/questions/51275730/populate-html-table-with-json-data -->
@@ -83,7 +89,20 @@
 
     <%- include ('includes/scripts') %>
 
+<script>	
+	var success = <%- JSON.stringify(query.success) %>;
+	var success1 = document.getElementById('success')
+	var success2 = document.getElementById('success2')
 
+
+	if (success==1){
+		success1.removeAttribute('hidden');
+	}
+	if (success==2){
+		success2.removeAttribute('hidden');
+	}
+
+</script>
 
 </body>
 
