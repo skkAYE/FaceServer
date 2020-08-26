@@ -104,7 +104,9 @@ router.get('/contact', function (req, res) {
 });
 
 router.get('/add', function (req, res) {
-    res.render('add.ejs', {query : req.query});
+	var path = __dirname + '/../public/images/'
+	var peopleArray = getDirectories(path)
+    res.render('add.ejs', {query : req.query, peopleArr : peopleArray});
 });
 
 router.post('/add', upload.single('photo'), (req, res) => {
